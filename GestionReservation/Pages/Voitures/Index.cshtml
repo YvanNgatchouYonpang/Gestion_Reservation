@@ -1,0 +1,30 @@
+﻿@page
+@model GestionReservation.Pages.Voitures.IndexModel
+@{
+}
+<table>
+    <thead>
+        <tr>
+            <th>Marque</th>
+            <th>Prix</th>
+            <th>Année</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var v in Model.Voitures)
+        {
+            <tr>
+                <td>@v.Marque</td>
+                <td>@v.PrixJournalier</td>
+                <td>@v.AnneeFabrication</td>
+                <td>
+                    <a asp-page="Details" asp-route-id="@v.Id">Détails</a>
+                    <a asp-page="Edit" asp-route-id="@v.Id">Modifier</a>
+                    <a asp-page="Delete" asp-route-id="@v.Id">Supprimer</a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>

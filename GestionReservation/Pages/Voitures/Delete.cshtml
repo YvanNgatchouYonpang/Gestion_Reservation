@@ -1,0 +1,14 @@
+﻿@page
+@model GestionReservation.Pages.Voitures.DeleteModel
+@{
+}
+<h2>Supprimer</h2>
+<p>Voulez-vous supprimer cette voiture ?</p>
+
+<p>@Model.Voiture.Marque - @Model.Voiture.PrixJournalier</p>
+
+<form method="post">
+    <input type="hidden" asp-for="Voiture.Id" />
+    <button type="submit">Oui</button>
+    <a asp-page="Index">Annuler</a>
+</form>

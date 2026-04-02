@@ -1,0 +1,16 @@
+﻿@page
+@using global::GestionReservations.Models
+@model GestionReservations.Pages.Voitures.EditModel
+
+<h2>Modifier</h2>
+
+<form method="post">
+    <input type="hidden" asp-for="Voiture.Id" />
+
+    <select asp-for="Voiture.Marque" asp-items="Html.GetEnumSelectList<Marque>()"></select>
+    <input asp-for="Voiture.PrixJournalier"/>
+    <input asp-for="Voiture.Description"/>
+    <input asp-for="Voiture.AnneeFabrication"/>
+
+    <button type="submit">Enregistrer</button>
+</form>
