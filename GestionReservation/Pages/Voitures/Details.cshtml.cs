@@ -2,13 +2,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using GestionReservations.Models;
 using GestionReservations.Services;
-using global::GestionReservations.Models;
-using global::GestionReservations.Services;
+
 
 namespace GestionReservation.Pages.Voitures
 {
 
-   
+
 
     namespace GestionReservations.Pages.Voitures
     {

@@ -11,7 +11,9 @@ namespace GestionReservation.Pages.Voitures
         private VoitureService service = new VoitureService();
         public void OnGet()
         {
+            
             Voitures = service.GetAll();
+            Voitures = VoitureService.ObtenirVoiture();
         }
     }
 }

@@ -12,6 +12,7 @@ namespace GestionReservations.Models
         [Range(0, 500)]
         public int PrixJournalier { get; set; }
 
+        [Required]
         [StringLength(500)]
         public string Description { get; set; }
 

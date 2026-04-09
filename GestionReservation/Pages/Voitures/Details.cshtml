@@ -1,11 +1,26 @@
 ﻿@page
 @model GestionReservations.Pages.Voitures.DetailsModel
+<h2>Détails voiture</h2>
 
-<h2>Détails</h2>
 
-<p>Marque: @Model.Voiture.Marque</p>
-<p>Prix: @Model.Voiture.PrixJournalier</p>
-<p>Description: @Model.Voiture.Description</p>
-<p>Année: @Model.Voiture.AnneeFabrication</p>
+<div>
 
-<a asp-page="Index">Retour</a>
+    <dl class="row">
+        <dt class="col-sm-2">Marque</dt>
+        <dd class="col-sm-10"> @Model.Voiture.Marque</dd>
+
+        <dt class="col-sm-2">Prix</dt>
+        <dd class="col-sm-10"> @Model.Voiture.PrixJournalier</dd>
+
+        <dt class="col-sm-2">Description</dt>
+        <dd class="col-sm-10"> @Model.Voiture.Description</dd>
+
+        <dt class="col-sm-2">Année</dt>
+        <dd class="col-sm-10"> @Model.Voiture.AnneeFabrication</dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Voiture.Id">Modifier</a>
+    <a asp-page="./Index">Retour</a>
+</div>

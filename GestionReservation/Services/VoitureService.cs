@@ -7,6 +7,13 @@ namespace GestionReservations.Services
     {
         private readonly string path = ".\\voitures.txt";
 
+        private static List<Voiture> _voitures = new List<Voiture>
+        {
+
+            new Voiture { Id = 1, Marque= Marque.Kia,  PrixJournalier = 150, Description = "description voiture1", AnneeFabrication = 2010 },
+            new Voiture { Id = 2, Marque = Marque.Toyota, PrixJournalier = 25, Description = "description voiture2", AnneeFabrication = 2020},
+             new Voiture { Id = 3, Marque = Marque.Ford, PrixJournalier = 70, Description = "description voiture3", AnneeFabrication = 2022 },
+        };
         public List<Voiture> GetAll()
         {
             if (!File.Exists(path))
@@ -47,6 +54,22 @@ namespace GestionReservations.Services
             var list = GetAll();
             list.RemoveAll(x => x.Id == id);
             Save(list);
+        }
+
+       /* public void Afficher(Voiture v)
+        {
+            if (!File.Exists(".\\voitures.txt"))
+            {
+                File.Create(".\\voitures.txt").Close();
+            }
+        }*/
+       public static List<Voiture> ObtenirVoiture()
+        {
+            return _voitures;
+        }
+       public static Voiture? ObtenirSelonId(int id)
+        {
+            return _voitures.FirstOrDefault(x => x.Id == id);
         }
     }
 }
