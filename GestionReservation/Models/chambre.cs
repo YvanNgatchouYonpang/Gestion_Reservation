@@ -12,5 +12,10 @@ namespace GestionReservations.Models
 
         [Range(0, 500)]
         public int PrixJournalier { get; set; }
+
+        public Chambre()
+        {
+            Id = ++Id;
+        }
     }
 }

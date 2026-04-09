@@ -7,6 +7,23 @@ namespace GestionReservations.Services
     {
         private readonly string path = ".\\chambres.txt";
 
+        private static List<Chambre> _chambres = new List<Chambre>
+        {
+            new Chambre {Id=1,Description="desctription chambre 1",PrixJournalier=200 },
+            new Chambre{Id=2,Description="desctription chambre 2",PrixJournalier=150 },
+            new Chambre{Id=3,Description="desctription chambre 3",PrixJournalier=120 },
+        };
+
+
+        public static void ChargerLaListe()
+        {
+            if (!File.Exists(path))
+            {
+                File.Create(path).Close();
+            }
+        }
+
+
         public List<Chambre> GetAll()
         {
             if (!File.Exists(path))
@@ -48,5 +65,16 @@ namespace GestionReservations.Services
             list.RemoveAll(x => x.Id == id);
             Save(list);
         }
+
+        public static List<Chambre> ObtenirChambre()
+        {
+            return _chambres;
+        }
+
+        public static Chambre? obtnirSelonId(int id)
+        {
+            return _chambres.SingleOrDefault(x => x.Id == id);
+        }
+
     }
 }

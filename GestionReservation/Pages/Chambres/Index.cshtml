@@ -2,3 +2,44 @@
 @model GestionReservation.Pages.Chambres.IndexModel
 @{
 }
+
+
+<h1>Liste des chambres</h1>
+
+<p>
+    <a asp-page="Create">Nouvelle chambre</a>
+</p>
+
+<form>
+    <p>
+        Recherche selon prix : <input type="text"  />
+        <input type="submit" value="Rechercher" class="btn btn-success" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Description</th>
+            <th>Prix Journalier</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var chambre in Model.Chambres)
+        {
+            <tr>
+                <td>@chambre.Id</td>
+                <td>@chambre.Description</td>
+                <td>@chambre.PrixJournalier</td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@chambre.Id">Modifier</a> |
+                    <a asp-page="./Consulter" asp-route-id="@chambre.Id">Détail</a> |
+                    <a asp-page="./Delete" asp-route-id="@chambre.Id">Supprimer</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
