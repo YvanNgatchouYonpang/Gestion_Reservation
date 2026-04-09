@@ -1,9 +1,9 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using GestionReservations.Models;
 using GestionReservations.Services;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace GestionReservations.Pages.Voitures
+namespace GestionReservation.Pages.Voitures
 {
     public class EditModel : PageModel
     {
@@ -37,3 +37,4 @@ namespace GestionReservations.Pages.Voitures
         }
     }
 }
+
