@@ -2,6 +2,7 @@
 @using global::GestionReservations.Models
 @model GestionReservation.Pages.Chambres.CreateModel
 @{
+    ViewData["Title"] = "Ajout Chambre";
 }
 
 <h2>Ajouter une chambre</h2>
@@ -22,7 +23,7 @@
             </div>      
             <br />
             <div class="form-group">
-                <input type="submit" name="btnAjouter" value="Ajouter" class="btn btn-success" />
+                <input type="submit" name="btnAjouter" value="Ajouter" class="btn btn-success" /> |
                 <a asp-page="Index">Retour à la liste</a>
             </div>
         </form>

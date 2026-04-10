@@ -1,21 +1,15 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using GestionReservation.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace GestionReservations.Models
 {
-    public class Chambre
+    public class Chambre:Article
     {
-        public int Id { get; set; }
-
-        [Required]
-        [StringLength(500)]
-        public string Description { get; set; }
-
-        [Range(0, 500)]
-        public int PrixJournalier { get; set; }
+        private static int _id=0;
 
         public Chambre()
         {
-            Id = ++Id;
+            Id = ++_id;
         }
     }
 }

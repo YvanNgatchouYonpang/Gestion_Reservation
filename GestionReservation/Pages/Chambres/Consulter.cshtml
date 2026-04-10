@@ -1,0 +1,19 @@
+﻿@page
+@model GestionReservation.Pages.Chambres.ConsulterModel
+@{
+}
+
+<h1>Détails sur la chambre</h1>
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">Description</dt>
+        <dd class="col-sm-10"> @Model.Chambre.Description</dd>
+
+        <dt class="col-sm-2">Prix</dt>
+        <dd class="col-sm-10"> @Model.Chambre.PrixJournalier</dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Chambre.Id">Modifier</a> |
+    <a asp-page="./Index">Retourner à la liste</a>
+</div>
