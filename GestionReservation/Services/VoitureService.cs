@@ -30,30 +30,33 @@ namespace GestionReservations.Services
 
         public void Add(Voiture v)
         {
-            var list = GetAll();
-            v.Id = list.Any() ? list.Max(x => x.Id) + 1 : 1;
-            list.Add(v);
-            Save(list);
+            var voitures = GetAll();
+            v.Id = voitures.Any() ? voitures.Max(v => v.Id) + 1 : 1;
+            voitures.Add(v);
+            Save(voitures);
         }
 
         public Voiture Get(int id) => GetAll().FirstOrDefault(x => x.Id == id);
 
         public void Update(Voiture v)
         {
-            var list = GetAll();
-            var index = list.FindIndex(x => x.Id == v.Id);
-            if (index != -1)
+            var voitures = GetAll();
+            var index = voitures.FirstOrDefault(x => x.Id == v.Id);
+            if (index != null)
             {
-                list[index] = v;
-                Save(list);
+                index.Marque = v.Marque;
+                index.PrixJournalier = v.PrixJournalier;
+                index.Description = v.Description;
+                index.AnneeFabrication = v.AnneeFabrication; 
+                Save(voitures);
             }
         }
 
         public void Delete(int id)
         {
-            var list = GetAll();
-            list.RemoveAll(x => x.Id == id);
-            Save(list);
+            var voitures = GetAll();
+            voitures.RemoveAll(x => x.Id == id);
+            Save(voitures);
         }
 
        /* public void Afficher(Voiture v)
@@ -70,6 +73,11 @@ namespace GestionReservations.Services
        public static Voiture? ObtenirSelonId(int id)
         {
             return _voitures.FirstOrDefault(x => x.Id == id);
+        }
+
+        internal static List<Voiture> ObtenirSelonId(string filtreMarquePrix)
+        {
+            throw new NotImplementedException();
         }
     }
 }

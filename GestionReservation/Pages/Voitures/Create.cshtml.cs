@@ -26,8 +26,8 @@ namespace GestionReservation.Pages.Voitures
                 return Page();
             }
                 
-            service.Add(Voiture);
-            return RedirectToPage("Index");
+          service.Add(Voiture);
+            return RedirectToPage("./Index");
         }
     }
 }

@@ -1,13 +1,29 @@
 ﻿@page
 @model GestionReservation.Pages.Voitures.IndexModel
 @{
+    ViewData["Title"] = "Gestion des Voitures";
 }
+
+<h1>Liste des voitures</h1>
+
+<p>
+    <a asp-page="Create">Nouvelle Voiture</a>
+</p>
+
+<form>
+    <p>
+        Recherche selon Marque/Prix : <input type="text" asp for="FiltreMarquePrix" />
+    </p>
+</form>
+
 <table class="table">
     <thead>
         <tr>
+            <th>Id</th>
             <th>Marque</th>
             <th>Prix</th>
             <th>Année</th>
+            <th></th>
            
         </tr>
     </thead>
@@ -15,11 +31,12 @@
         @foreach (var v in Model.Voitures)
         {
             <tr>
+                <td>@v.Id</td>
                 <td>@v.Marque</td>
                 <td>@v.PrixJournalier</td>
                 <td>@v.AnneeFabrication</td>
                 <td>
-                    <a asp-page="./Details" asp-route-id="@v.Id">Détails</a>
+                    <a asp-page="./Consulter" asp-route-id="@v.Id">Consulter</a>
                     <a asp-page="./Edit" asp-route-id="@v.Id">Modifier</a>
                     <a asp-page="./Delete" asp-route-id="@v.Id">Supprimer</a>
                 </td>
