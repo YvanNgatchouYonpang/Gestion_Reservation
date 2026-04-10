@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace GestionReservations.Models
 {
-    public class Chambre:Article
+    public class Chambre:Produit
     {
         private static int _id=0;
 
