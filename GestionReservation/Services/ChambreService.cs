@@ -23,7 +23,7 @@ namespace GestionReservations.Services
                 File.Create(_path).Close();
             }
             _chambres = new List<Chambre>();
-            using(StreamReader sr = new StreamReader(_path))
+            using (StreamReader sr = new StreamReader(_path))
             {
                 string ligne;
                 while ((ligne = sr.ReadLine()) != null)
@@ -37,7 +37,7 @@ namespace GestionReservations.Services
                         PrixJournalier = int.Parse(attributs[2])
                     };
 
-                    _chambres.Add(chambre);                      
+                    _chambres.Add(chambre);
 
                 }
             }
@@ -54,13 +54,33 @@ namespace GestionReservations.Services
                 _chambres.Add(chambre);
             }
         }
+        //modification chambre
+        public static void UpdateChambre(Chambre chambre)
+        {
+            Chambre? chamb = ObtnirSelonId(chambre.Id);
+            if (chamb != null)
+            {
+                chamb.Description = chambre.Description;
+                chamb.PrixJournalier = chambre.PrixJournalier;
+                //SaveChambre(chambre);
+                RefreshFile();
+            }
 
+        }
+
+        //suppression d'une chambre
+        public static void DeleteChambre(int id)
+        {
+            Chambre chambre = ObtnirSelonId(id);
+            _chambres.Remove(chambre);
+            RefreshFile();
+        }
         //enregistrer une chambre dans le fichier
         public static void SaveChambre(Chambre chambre)
         {
             using (StreamWriter sw = new StreamWriter(_path, true))
             {
-                sw.WriteLine(chambre.Id+";"+chambre.Description+";"+chambre.PrixJournalier);
+                sw.WriteLine(chambre.Id + ";" + chambre.Description + ";" + chambre.PrixJournalier);
             }
         }
         public static List<Chambre> ObtenirChambre()
@@ -68,22 +88,26 @@ namespace GestionReservations.Services
             return _chambres.ToList();
         }
 
-        public static Chambre ObtnirSelonId(int id)
+        public static Chambre? ObtnirSelonId(int id)
         {
             return _chambres.SingleOrDefault(x => x.Id == id);
         }
 
-
-        public static void UpdateChambre(Chambre chambre)
+        public static void RefreshFile()
         {
-            Chambre? chamb = ObtnirSelonId(chambre.Id);
-            if (chamb != null)
+            using (StreamWriter rw = new StreamWriter(_path))
             {
-                chamb.Description= chambre.Description;
-                chamb.PrixJournalier=chambre.PrixJournalier;
-                SaveChambre(chambre);
+                foreach (Chambre chambre in _chambres)
+                {
+                    rw.WriteLine(chambre.Id + ";" + chambre.Description + ";" + chambre.PrixJournalier);
+                }
             }
 
+        }
+
+        public static List<Chambre> Recherche(int prix)
+        {
+            return _chambres.FindAll(x => x.PrixJournalier == prix);
         }
     }
 }

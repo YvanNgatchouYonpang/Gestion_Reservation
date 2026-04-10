@@ -8,9 +8,20 @@ namespace GestionReservation.Pages.Chambres
     public class IndexModel : PageModel
     {
         public List<Chambre> Chambres { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public int Prix {  get; set; }
+        
         public void OnGet()
         {
-            Chambres = ChambreService.ObtenirChambre();
+            if (Prix != 0)
+            {
+                Chambres = ChambreService.Recherche(Prix);
+            }
+            else
+            {
+                Chambres = ChambreService.ObtenirChambre();
+            }
         }
     }
 }

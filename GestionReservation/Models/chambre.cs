@@ -11,5 +11,10 @@ namespace GestionReservations.Models
         {
             Id = ++_id;
         }
+
+        public static void RefrechId()
+        {
+            _id--;
+        }
     }
 }

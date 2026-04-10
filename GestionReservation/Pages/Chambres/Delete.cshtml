@@ -1,4 +1,33 @@
 ﻿@page
-@model GestionReservation.Pages.Chambres.DeleteModel
+@model GestionReservation.Pages.Chambres.SuppModel
 @{
 }
+
+<h2>Supprission d'une chambre</h2>
+<p>Voulez-vous supprimer cette chambre ?</p>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">Description</dt>
+        <dd class="col-sm-10"> @Model.Chambre.Description</dd>
+
+        <dt class="col-sm-2">Prix</dt>
+        <dd class="col-sm-10"> @Model.Chambre.PrixJournalier</dd>
+    </dl>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <input asp-for="Chambre.Id" class="form-control" type="hidden" />
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Supprimer" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Retourner à la liste</a>
+</div>
