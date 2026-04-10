@@ -1,5 +1,5 @@
-using GestionReservations.Models;
-using GestionReservations.Services;
+using GestionReservation.Models;
+using GestionReservation.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -15,14 +15,14 @@ namespace GestionReservation.Pages.Voitures
             service = new VoitureService();
         }
 
-        public void OnGet(int id)
-        {
-            voiture = service.Get(id);
-        }
-        public IActionResult Onpost(int id)
-        {
-            service.Delete(id);
-            return RedirectToPage("Index");
-        }
+        //public void OnGet(int id)
+        //{
+        //    voiture = VoitureService.Get(id);
+        //}
+        //public IActionResult Onpost(int id)
+        //{
+        //    VoitureService.
+        //    return RedirectToPage("Index");
+        //}
     }
 }

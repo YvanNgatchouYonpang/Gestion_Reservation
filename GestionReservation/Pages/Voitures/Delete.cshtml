@@ -1,13 +1,43 @@
 ﻿@page
 @model GestionReservation.Pages.Voitures.DeleteModel
 @{
+    ViewData["Title"] = "Suppression Voiture";
 }
 <h2>Supprimer voiture</h2>
 
-<p>Voulez-vous supprimer @Model.voiture.Marque?</p>
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">Identifiant</dt>
+        <dd class="col-sm-10">@Model.voiture.Id</dd>
 
-<form method="post">
+        <dt class="col-sm-2">Marque</dt>
+        <dd class="col-sm-10">@Model.voiture.Marque</dd>
 
-    <button type="submit">Oui</button>
-    <a asp-page="Index">Annuler</a>
-</form>
+        <dt class="col-sm-2">PrierJournalier</dt>
+        <dd class="col-sm-10">@Model.voiture.PrixJournalier</dd>
+
+        <dt class="col-sm-2">Description</dt>
+        <dd class="col-sm-10">@Model.voiture.Description</dd>
+
+        <dt class="col-sm-2">AnneeFrabrication</dt>
+        <dd class="col-sm-10">@Model.voiture.AnneeFabrication</dd>
+    </dl>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+
+            <input asp-for="voiture.Id" class="form-control" type="hidden" />
+
+            <div class="form-group">
+                <input type="submit" value="Supprimer" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.voiture.Id">Modifier</a> |
+    <a asp-page="./Index">Retourner à la liste</a>
+</div>

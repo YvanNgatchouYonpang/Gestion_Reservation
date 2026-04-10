@@ -1,5 +1,5 @@
-using GestionReservations.Models;
-using GestionReservations.Services;
+using GestionReservation.Models;
+using GestionReservation.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -12,14 +12,10 @@ namespace GestionReservation.Pages.Voitures
 
         private VoitureService service = new VoitureService();
 
-        public IActionResult OnGet(int id)
+        public void OnGet(int id)
         {
-            Voiture = service.Get(id);
+            Voiture = VoitureService.ObtnirSelonId(id);
 
-            if (Voiture == null)
-                return RedirectToPage("Index");
-
-            return Page();
         }
 
         public IActionResult OnPost()
@@ -32,7 +28,7 @@ namespace GestionReservation.Pages.Voitures
             if (!ModelState.IsValid)
                 return Page();
 
-            service.Update(Voiture);
+            VoitureService.UpdateVoiture(Voiture);
             return RedirectToPage("Index");
         }
     }

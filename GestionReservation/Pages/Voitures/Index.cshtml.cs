@@ -1,5 +1,5 @@
-using GestionReservations.Models;
-using GestionReservations.Services;
+using GestionReservation.Models;
+using GestionReservation.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -11,19 +11,26 @@ namespace GestionReservation.Pages.Voitures
 
         [BindProperty(SupportsGet = true)]
 
-        public string  FiltreMarquePrix { get; set; }
+        public int FiltreId { get; set; }
 
 
         private VoitureService service = new VoitureService();
         public void OnGet()
         {
-            if (string.IsNullOrWhiteSpace(FiltreMarquePrix)) { Voitures = VoitureService.ObtenirVoiture(); }
-            else
-            {
-                Voitures = VoitureService.ObtenirSelonId(FiltreMarquePrix);
+            if (FiltreId !=0) 
+            { 
+                var Resultat = VoitureService.ObtnirSelonId(FiltreId);
+                if (Resultat != null)
+                {
+                    Voitures = new List<Voiture> { Resultat };
+                }
+                else {
+                    Voitures = VoitureService.ObtenirVoiture();
+                }
             }
+           
             
-            Voitures = service.GetAll();
+           // Voitures = service.GetAll();
             Voitures = VoitureService.ObtenirVoiture();
         }
     }

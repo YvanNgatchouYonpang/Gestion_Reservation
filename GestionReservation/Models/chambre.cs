@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace GestionReservations.Models
+namespace GestionReservation.Models
 {
     public class Chambre
     {
