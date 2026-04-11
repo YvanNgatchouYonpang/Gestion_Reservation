@@ -9,13 +9,6 @@ namespace GestionReservation.Services
 
 
         private static List<Voiture> _voitures = ChargerLaListe();
-        //private static List<Voiture> _voitures = new List<Voiture>
-        //{
-
-        //    new Voiture { Id = 1, Marque= Marque.Kia,  PrixJournalier = 150, Description = "description voiture1", AnneeFabrication = 2010 },
-        //    new Voiture { Id = 2, Marque = Marque.Toyota, PrixJournalier = 25, Description = "description voiture2", AnneeFabrication = 2020},
-        //     new Voiture { Id = 3, Marque = Marque.Ford, PrixJournalier = 70, Description = "description voiture3", AnneeFabrication = 2022 },
-        //};
 
         public static List<Voiture> ChargerLaListe()
         {
@@ -34,9 +27,9 @@ namespace GestionReservation.Services
                     Voiture v = new Voiture()
                     {
                         Id = int.Parse(attributs[0]),
-                        Marque = (Marque)int.Parse(attributs[1]),
-                        Description = attributs[2],
-                        PrixJournalier = int.Parse(attributs[3]),
+                        Marque = attributs[1],
+                        Description = attributs[3],
+                        PrixJournalier = int.Parse(attributs[2]),
                         AnneeFabrication = int.Parse(attributs[4])
                     };
 
@@ -48,14 +41,14 @@ namespace GestionReservation.Services
         }
 
         //ajouter les informations dans le fichier et dans la liste
-        public static void AddVoiture(Voiture v)
+        public static void AddVoiture(Voiture voiture)
         {
             //ajouter si la chambre n'existe pas
-            if (!_voitures.Any(v => v.Id == v.Id))
-            {
-                SaveVoiture(v);
-                _voitures.Add(v);
-            }
+            //if (!_voitures.Any(v => v.Id == voiture.Id))
+            //{
+                SaveVoiture(voiture);
+                _voitures.Add(voiture);
+            //}
         }
 
         //enregistrer une chambre dans le fichier
@@ -87,9 +80,32 @@ namespace GestionReservation.Services
                 voit.Description = v.Description;
                 voit.PrixJournalier = v.PrixJournalier;
                 voit.AnneeFabrication = v.AnneeFabrication;
-                SaveVoiture(v);
+                //SaveVoiture(v);
+                RefreshFile();
             }
 
         }
+
+        //suppression d'une voiture
+        public static void DeleteVoiture(int id)
+        {
+            Voiture voiture = ObtnirSelonId(id);
+            _voitures.Remove(voiture);
+            RefreshFile();
+        }
+
+        public static void RefreshFile()
+        {
+            using (StreamWriter sw = new StreamWriter(_path))
+            {
+                foreach (Voiture v in _voitures)
+                {
+                    sw.WriteLine(v.Id + ";" + v.Marque + ";" + v.PrixJournalier + ";" + v.Description + ";" + v.AnneeFabrication);
+                }
+            }
+
+        }
+
+      
     }
 }

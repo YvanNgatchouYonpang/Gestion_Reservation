@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using GestionReservations.Models;
-using GestionReservations.Services;
+using GestionReservation.Models;
+using GestionReservation.Services;
 
 namespace GestionReservation.Pages.Chambres
 {

@@ -13,7 +13,7 @@
 <form>
     <p>
         Recherche selon Marque/Prix : <input type="text" asp for="FiltreMarquePrix" />
-        <input type="submit" value="Rechercher" />
+        <input type="submit" value="Rechercher" class="btn btn-success"/>
     </p>
 </form>
 
@@ -23,6 +23,7 @@
             <th>Id</th>
             <th>Marque</th>
             <th>Prix</th>
+            <th>Description</th>
             <th>Année</th>
             <th></th>
            
@@ -35,6 +36,7 @@
                 <td>@v.Id</td>
                 <td>@v.Marque</td>
                 <td>@v.PrixJournalier</td>
+                <td>@v.Description</td>
                 <td>@v.AnneeFabrication</td>
                 <td>
                     <a asp-page="./Consulter" asp-route-id="@v.Id">Consulter</a>

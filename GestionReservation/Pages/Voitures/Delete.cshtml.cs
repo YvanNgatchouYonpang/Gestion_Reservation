@@ -3,12 +3,12 @@ using GestionReservation.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace GestionReservation.Pages.Chambres
+namespace GestionReservation.Pages.Voitures
 {
-    public class SuppModel : PageModel
+    public class DeleteModel : PageModel
     {
         [BindProperty]
-        public Chambre Chambre { get; set; }
+        public Voiture Voiture { get; set; }
         public ActionResult OnGet(int? id)
         {
             //On retourne une erreur HTTP 404 NOT Found si l'ID est nul
@@ -16,20 +16,20 @@ namespace GestionReservation.Pages.Chambres
             {
                 return NotFound();
             }
-            var chambre = ChambreService.ObtnirSelonId(id.Value);
+            var voiture = VoitureService.ObtnirSelonId(id.Value);
             //On retourne une erreur HTTP 404 NOT Found si on ne trouve pas d'etudiant correspondant à l'ID
-            if (chambre == null)
+            if (voiture == null)
             {
                 return NotFound();
             }
 
-            Chambre = chambre;
+            Voiture = voiture;
             return Page();
         }
 
         public ActionResult OnPost()
         {
-            ChambreService.DeleteChambre(Chambre.Id);
+            VoitureService.DeleteVoiture(Voiture.Id);
 
             //Avec le nouvel étudiant 
             return RedirectToPage("./Index");

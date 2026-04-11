@@ -12,7 +12,7 @@ namespace GestionReservation.Models
             Id = ++_id;
         }
 
-        public static void RefrechId()
+        public static void RefreshId()
         {
             _id--;
         }

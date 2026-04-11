@@ -1,0 +1,39 @@
+﻿@page
+@model GestionReservation.Pages.Voitures.DeleteModel
+@{
+}
+
+
+<h2>Suppression d'une Voiture</h2>
+<p>Voulez-vous supprimer cette voiture ?</p>
+
+<div>
+    <dl class="row">     
+
+        <dt class="col-sm-2">Marque</dt>
+        <dd class="col-sm-10"> @Model.Voiture.Marque</dd>
+
+        <dt class="col-sm-2">Prix</dt>
+        <dd class="col-sm-10"> @Model.Voiture.PrixJournalier</dd>
+
+        <dt class="col-sm-2">Description</dt>
+        <dd class="col-sm-10"> @Model.Voiture.Description</dd>
+
+        <dt class="col-sm-2">Année</dt>
+        <dd class="col-sm-10"> @Model.Voiture.AnneeFabrication</dd>
+    </dl>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <input asp-for="Voiture.Id" class="form-control" type="hidden" />
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Oui" class="btn btn-success" /> |
+                <a asp-page="./Index">Retour à la liste</a>
+            </div>
+        </form>
+    </div>
+</div>
+

@@ -2,21 +2,23 @@
 
 namespace GestionReservation.Models
 {
-    public class Voiture
+    public class Voiture:Produit
     {
-        public int Id { get; set; }
-
+        private static int _id=0;
         [Required]
-        public Marque Marque { get; set; }
-
-        [Range(0, 500)]
-        public int PrixJournalier { get; set; }
-
-        [Required]
-        [StringLength(500)]
-        public string Description { get; set; }
+        public string Marque { get; set; }
 
         [Required]
         public int AnneeFabrication { get; set; }
+
+        public Voiture()
+        {
+            Id = ++_id;
+        }
+
+        public static void RefrechId()
+        {
+            _id--;
+        }
     }
 }
