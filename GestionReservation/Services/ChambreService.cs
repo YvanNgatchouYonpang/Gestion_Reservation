@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
-using GestionReservations.Models;
+using GestionReservation.Models;
 
-namespace GestionReservations.Services
+namespace GestionReservation.Services
 {
     public class ChambreService
     {

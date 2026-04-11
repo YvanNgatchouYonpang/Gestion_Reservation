@@ -1,7 +1,7 @@
-﻿namespace GestionReservations.Models
+﻿namespace GestionReservation.Models
 {
     public enum Marque
     {
-        Kia, Ford, Mazda, Toyota, Hyundai, Honda
+        Kia, Ford, Mazda, Toyota, Hyundai, Honda,
     }
 }
